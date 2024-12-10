@@ -7,7 +7,9 @@ import pytest
 def test_get_mask_card_number (card_input, card_output):
    assert get_mask_card_number(card_input) == card_output
 
-@pytest.mark.parametrize('account_input, account_output',[('73654108430135874305','**4305'),('123456789123','Не корректные данные')])
+@pytest.mark.parametrize('account_input, account_output',[('73654108430135874305','**4305'),('123456789123','Не корректные данные'),])
 
 def test_get_mask_account (account_input, account_output):
    assert get_mask_account(account_input) == account_output
+   with pytest.raises(AttributeError) as exc_info:
+      get_mask_account(123456789123)
