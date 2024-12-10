@@ -1,13 +1,10 @@
-def filter_by_state(addres_list: list, state_value: str = 'EXECUTED') -> list:
+def filter_by_state(addres_list: list, state_value: str = "EXECUTED") -> list:
     """Функция фильтровки по ключю state"""
     new_addres_list = []
     for index_list, value_list in enumerate(addres_list):
         if value_list.get("state") == state_value:
             new_addres_list.append(value_list)
-    if len(new_addres_list) == 0:
-        return 'Список пуст'
-    else:
-        return new_addres_list
+    return new_addres_list
 
 
 def sort_by_date(data_list: list, reverse_key: bool = True) -> list:
