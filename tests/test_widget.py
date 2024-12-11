@@ -29,4 +29,5 @@ def test_get_date() -> None:
     assert get_date("2024-03-11T02:26:18.671407") == "11.03.2024"
     with pytest.raises(TypeError) as exc_info:
         get_date(1234565)
+    with pytest.raises(ValueError) as exc_info:
         get_date("2024-03T02:26:18.671407")
