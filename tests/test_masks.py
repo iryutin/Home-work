@@ -21,5 +21,5 @@ def test_get_mask_card_number(card_input: str, card_output: str) -> None:
 def test_get_mask_account(account_input: str, account_output: str) -> None:
     """Тест функции get_mask_account"""
     assert get_mask_account(account_input) == account_output
-    with pytest.raises(AttributeError) as exc_info:
+    with pytest.raises(AttributeError):
         get_mask_account(123456789123)
