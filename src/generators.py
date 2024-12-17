@@ -15,10 +15,9 @@ def transaction_descriptions(transaction: list[dict]) -> Iterator:
         yield x
 
 
-def card_number() -> Iterator:
+def card_number(start: int, stop: int) -> Iterator:
     """Генерация номера карты"""
-    x = 0
-    while x <= 9999999999999999:
-        new_card_namber = "0" * (16 - len(str(x))) + str(x)
+    for x in range(start, stop):
+        namber = str(x)
+        new_card_namber = "0" * (16 - len(namber)) + namber
         yield " ".join(textwrap.wrap(new_card_namber, 4))
-        x += 1
