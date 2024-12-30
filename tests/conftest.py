@@ -33,3 +33,28 @@ def transactions():
             "to": "Счет 75651667383060284188",
         },
     ]
+
+
+@pytest.fixture()
+def conversion_data_out():
+    return {
+        "date": "2018-02-22",
+        "historical": "",
+        "info": {"rate": 148.972231, "timestamp": 1519328414},
+        "query": {"amount": 25, "from": "GBP", "to": "JPY"},
+        "result": 100.0,
+        "success": True,
+    }
+
+
+@pytest.fixture()
+def conversion_data_in():
+    return {
+        "id": 41428829,
+        "state": "EXECUTED",
+        "date": "2019-07-03T18:35:29.512364",
+        "operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}},
+        "description": "Перевод организации",
+        "from": "MasterCard 7158300734726758",
+        "to": "Счет 35383033474447895560",
+    }

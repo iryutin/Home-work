@@ -1,7 +1,9 @@
-from typing import Callable, Any
+from typing import Any, Callable
+
 
 def log(filename: str = "") -> Callable[[str], Any]:
     """Декоратор логирования функции на ошибку или нет, создаёт файл если указать имя файла"""
+
     def decorator_log(func: Any) -> Callable[[Any], Any]:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
@@ -20,5 +22,7 @@ def log(filename: str = "") -> Callable[[str], Any]:
                 else:
                     print(f"{func.__name__} ok")
                     return result
+
         return wrapper
+
     return decorator_log
