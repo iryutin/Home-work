@@ -4,10 +4,10 @@ import logging
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-file_hader = logging.FileHandler(f"logs/{__name__}.log")
+file_handler = logging.FileHandler(f"logs/{__name__}.log")
 file_formater = logging.Formatter("%(asctime)s %(name)s %(levelname)s: %(message)s")
-file_hader.setFormatter(file_formater)
-logger.addHandler(file_hader)
+file_handler.setFormatter(file_formater)
+logger.addHandler(file_handler)
 
 
 def data_operatinons_convert(path: str) -> list:
@@ -23,5 +23,5 @@ def data_operatinons_convert(path: str) -> list:
     except FileNotFoundError:
         logging.error(f"Файл не найден {path}")
         return []
-    logging.debug(f"Прога отработала")
+    logging.debug("Прога отработала")
     return operatinon_data

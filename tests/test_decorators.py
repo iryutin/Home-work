@@ -1,12 +1,10 @@
-import pytest
-
 from src.decorators import log
 
 
 def test_log(capsys):
     @log()
     def callitka(x=True):
-        if x != True:
+        if x is not True:
             raise TypeError("TypeError")
         else:
             pass
