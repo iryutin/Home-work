@@ -1,5 +1,3 @@
-import pytest
-
 from src.utils import data_operatinons_convert
 
 
