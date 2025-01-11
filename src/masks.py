@@ -1,6 +1,6 @@
 import logging
 
-logger = logging.getLogger('masks')
+logger = logging.getLogger("masks")
 logger.setLevel(logging.DEBUG)
 file_handler = logging.FileHandler("D:/my_project2/pythonProject1/logs/masks.log")
 file_formater = logging.Formatter("%(asctime)s %(name)s %(levelname)s: %(message)s")

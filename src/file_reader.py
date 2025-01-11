@@ -1,24 +1,27 @@
-import pandas as pd
 import logging
 
-logger = logging.getLogger('file_reader')
+import pandas as pd
+
+logger = logging.getLogger("file_reader")
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler(f"D:/my_project2/pythonProject1/logs/file_reader.log")
+file_handler = logging.FileHandler("D:/my_project2/pythonProject1/logs/file_reader.log")
 file_formater = logging.Formatter("%(asctime)s %(name)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formater)
 logger.addHandler(file_handler)
 
-def transformation_csv(file_way):
+
+def transformation_csv(file_way:str) -> list[dict]:
     """Функция принимает путь к файлу csv и выдаёт список словарей"""
     try:
-        df = pd.read_csv(file_way, sep=';')
+        df = pd.read_csv(file_way, sep=";")
     except FileNotFoundError:
         logging.error(f"Файл не найден {file_way}")
         return []
     else:
-        return df.to_dict(orient='records')
+        return df.to_dict(orient="records")
 
-def transformation_exel(file_way):
+
+def transformation_excel(file_way:str) -> list[dict]:
     """Функция принимает путь к файлу exel и выдаёт список словарей"""
     try:
         df = pd.read_excel(file_way)
@@ -26,4 +29,4 @@ def transformation_exel(file_way):
         logging.error(f"Файл не найден {file_way}")
         return []
     else:
-        return df.to_dict(orient='records')
+        return df.to_dict(orient="records")
