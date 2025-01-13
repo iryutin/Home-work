@@ -2,9 +2,9 @@ import codecs
 import json
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("utils")
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler(f"logs/{__name__}.log")
+file_handler = logging.FileHandler("D:/my_project2/pythonProject1/logs/utils.log")
 file_formater = logging.Formatter("%(asctime)s %(name)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formater)
 logger.addHandler(file_handler)
