@@ -25,3 +25,6 @@ def data_operatinons_convert(path: str) -> list:
         return []
     logging.debug("Прога отработала")
     return operatinon_data
+
+
+#print(data_operatinons_convert('D:/my_project2/pythonProject1/data/operations.json'))

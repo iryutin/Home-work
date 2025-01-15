@@ -4,7 +4,7 @@ from collections.abc import Iterator
 
 def filter_by_currency(transaction: list[dict], currency: str) -> Iterator:
     """Фильтрация списка по валюте"""
-    transaction_filter = (x for x in transaction if x["operationAmount"]["currency"]["code"] == currency)
+    transaction_filter = (x for x in transaction if x.get("operationAmount",{}).get("currency",{}).get("code",'') == currency)
     return transaction_filter
 
 
