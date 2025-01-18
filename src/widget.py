@@ -3,7 +3,16 @@ import datetime
 
 def mask_account_card(account_card_date: str) -> str:
     """Функция маскировки счёта или карты"""
-    cards_names = ["maestro", "mastercard", "visa classic", "visa platinum", "visa gold"]
+    cards_names = [
+        "maestro",
+        "mastercard",
+        "visa classic",
+        "visa platinum",
+        "visa gold",
+        "discover",
+        "american express",
+        "visa",
+    ]
     if account_card_date == "":
         return ""
     if "счет" in str(account_card_date).lower():

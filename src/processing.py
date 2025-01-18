@@ -9,4 +9,4 @@ def filter_by_state(addres_list: list, state_value: str = "EXECUTED") -> list:
 
 def sort_by_date(data_list: list, reverse_key: bool = True) -> list:
     """Функция сортировки данных"""
-    return sorted(data_list, key=lambda x: x.get("date",''), reverse=reverse_key)
+    return sorted(data_list, key=lambda x: x.get("date", ""), reverse=reverse_key)
