@@ -24,12 +24,11 @@ def find_transactions(transactions_list: list[dict], key_string: str) -> list[di
 def group_transactions_by_category(transactions_list: list[dict], description_list: list) -> dict:
     """Принимает список словарей с данными о банковских операциях и список категорий операций, а возвращать словарь, \
     в котором ключи — это названия категорий, а значения — это количество операций в каждой категории."""
-    for description in description_list:
-        description_list = [
-            transaction.get("description")
-            for transaction in transactions_list
-            if description in transaction.get("description")
-        ]
-    grouped_transactions = Counter(description_list)
+    new_description_list = []
+    for transaction in transactions_list:
+        for description in description_list:
+            if re.search(transaction.get("description", ""), description) is not None:
+                new_description_list.append(transaction.get("description", ""))
+    grouped_transactions = Counter(new_description_list)
     logger.info("Список операций успешно сгрупирован по названиям категорий.")
     return dict(grouped_transactions)
