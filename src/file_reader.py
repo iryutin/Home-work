@@ -10,7 +10,7 @@ file_handler.setFormatter(file_formater)
 logger.addHandler(file_handler)
 
 
-def transformation_csv(file_way:str) -> list[dict]:
+def transformation_csv(file_way: str) -> list[dict]:
     """Функция принимает путь к файлу csv и выдаёт список словарей"""
     try:
         df = pd.read_csv(file_way, sep=";")
@@ -18,10 +18,20 @@ def transformation_csv(file_way:str) -> list[dict]:
         logging.error(f"Файл не найден {file_way}")
         return []
     else:
-        return df.to_dict(orient="records")
+        data = df.to_dict(orient="records")
+        for dict_data in data:
+            amount, currency_name, currency_code = (
+                dict_data.pop("amount"),
+                dict_data.pop("currency_name"),
+                dict_data.pop("currency_code"),
+            )
+            dict_data.update(
+                {"operationAmount": {"amount": amount, "currency": {"name": currency_name, "code": currency_code}}}
+            )
+        return data
 
 
-def transformation_excel(file_way:str) -> list[dict]:
+def transformation_excel(file_way: str) -> list[dict]:
     """Функция принимает путь к файлу exel и выдаёт список словарей"""
     try:
         df = pd.read_excel(file_way)
@@ -29,4 +39,14 @@ def transformation_excel(file_way:str) -> list[dict]:
         logging.error(f"Файл не найден {file_way}")
         return []
     else:
-        return df.to_dict(orient="records")
+        data = df.to_dict(orient="records")
+        for dict_data in data:
+            amount, currency_name, currency_code = (
+                dict_data.pop("amount"),
+                dict_data.pop("currency_name"),
+                dict_data.pop("currency_code"),
+            )
+            dict_data.update(
+                {"operationAmount": {"amount": amount, "currency": {"name": currency_name, "code": currency_code}}}
+            )
+        return data
